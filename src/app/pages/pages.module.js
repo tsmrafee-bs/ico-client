@@ -23,9 +23,7 @@
     'BlurAdmin.pages.settings',
     'BlurAdmin.pages.verifyUserEmail',
     'BlurAdmin.pages.resetPassword',
-    'BlurAdmin.pages.resetPasswordConfirmation',
-    //'BlurAdmin.pages.receive',
-    //'BlurAdmin.pages.send'
+    'BlurAdmin.pages.resetPasswordConfirmation'
   ])
       .config(routeConfig);
 
