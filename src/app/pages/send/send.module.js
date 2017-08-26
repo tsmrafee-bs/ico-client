@@ -1,8 +1,8 @@
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.pages.send', [])
-      .config(routeConfig);
+  //angular.module('BlurAdmin.pages.send', [])
+  //    .config(routeConfig);
 
   ///** @ngInject */
   //function routeConfig($stateProvider) {
