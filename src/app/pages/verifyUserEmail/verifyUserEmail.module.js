@@ -8,7 +8,7 @@
     function routeConfig($stateProvider) {
         $stateProvider
             .state('verifyUserEmail', {
-                url: '/email/verify/:key',
+                url: '/email-verify/',
                 views:{
                     'admin':{
                         controller: 'VerifyUserEmailCtrl'
