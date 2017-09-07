@@ -3,6 +3,9 @@
 </div>
 <div ng-hide="loadingBasicInfoView" class="auth-main">
     <div class="identity-block text-center">
+        <div class="pull-right step-number">
+            Step 3 of 6
+        </div>
         <h1>Identity verification <span class="identity-title">| Basic information</span></h1>
 
         <div class="identity-form">
@@ -39,13 +42,13 @@
                         </div>
                         <div class="col-sm-9">
                             <div class="col-sm-4">
-                                <input class="form-control" placeholder="Month" type="text" ng-model="month">
+                                <input class="form-control" placeholder="Month" type="text" ng-model="birth.month">
                             </div>
                             <div class="col-sm-4">
-                                <input class="form-control" placeholder="Day" type="text" ng-model="day">
+                                <input class="form-control" placeholder="Day" type="text" ng-model="birth.day">
                             </div>
                             <div class="col-sm-4">
-                                <input class="form-control" placeholder="Year" type="text" ng-model="year">
+                                <input class="form-control" placeholder="Year" type="text" ng-model="birth.year">
                             </div>
                         </div>
                     </div>
@@ -76,7 +79,7 @@
                                        ng-model="address.postal_code">
                             </div>
                             <div class="col-sm-12">
-                                <button ng-click="updateUserInfo()" class="btn btn-primary pull-right identity-button">
+                                <button ng-click="updateUserInfo()" ng-disabled="!user.id_number || !birth.month || !birth.day || !birth.year" class="btn btn-primary pull-right identity-button">
                                     Next
                                 </button>
                                 <button ng-click="goToNextView()" class="btn btn-danger pull-left identity-button">

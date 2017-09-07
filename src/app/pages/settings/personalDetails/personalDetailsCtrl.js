@@ -11,6 +11,7 @@
         $scope.loadingAccountInfo = true;
         $scope.showAdminEmails = false;
         vm.updatedAdministrator = {};
+        $scope.birth = {};
 
         $scope.accountInfoChanged = function(field){
             vm.updatedAdministrator[field] = $scope.administrator[field];
@@ -27,6 +28,14 @@
                     $scope.loadingAccountInfo = false;
                     if (res.status === 200) {
                         $scope.administrator = res.data.data;
+                        if($scope.administrator.birth_date){
+                        var nums = $scope.administrator.birth_date.split("-");
+                        if(nums.length == 3){
+                            $scope.birth.year = nums[0];
+                            $scope.birth.month = nums[1];
+                            $scope.birth.day = nums[2];
+                        }
+                    }
                     }
                 }).catch(function (error) {
                     $scope.loadingAccountInfo = false;
@@ -37,6 +46,7 @@
         vm.getAdminAccountInfo();
 
         $scope.updateAdministratorAccount = function(){
+            vm.updatedAdministrator['birth_date'] = $scope.birth.year+"-"+$scope.birth.month+"-"+$scope.birth.day;
             $scope.loadingAccountInfo = true;
             $http.patch(environmentConfig.API + '/user/', vm.updatedAdministrator ,{
                 headers: {

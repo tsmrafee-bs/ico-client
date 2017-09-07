@@ -23,17 +23,37 @@
             <div class="form-group">
                 <label><strong>Expire date</strong> <span class="required-icon">*</span></label>
                 <br>
-                <input type="date" placeholder="Expire date" class="input-form-date" required>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <input class="form-control" placeholder="Month" type="text" ng-model="expire.month">
+                    </div>
+                    <div class="col-sm-4">
+                        <input class="form-control" placeholder="Day" type="text" ng-model="expire.day">
+                    </div>
+                    <div class="col-sm-4">
+                        <input class="form-control" placeholder="Year" type="text" ng-model="expire.year">
+                    </div>
+                </div>
             </div>
             <div class="form-group">
                 <label><strong>Issued by</strong> <span class="required-icon">*</span></label>
                 <br>
-                <input type="text" class="form-control" placeholder="Issued by" required>
+                <input type="text" class="form-control" placeholder="Issued by" ng-model="issued_by" required>
             </div>
             <div class="form-group">
                 <label><strong>Issued date</strong> <span class="required-icon">*</span></label>
                 <br>
-                <input type="date" placeholder="Issued date" class="input-form-date" required>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <input class="form-control" placeholder="Month" type="text" ng-model="issue.month">
+                    </div>
+                    <div class="col-sm-4">
+                        <input class="form-control" placeholder="Day" type="text" ng-model="issue.day">
+                    </div>
+                    <div class="col-sm-4">
+                        <input class="form-control" placeholder="Year" type="text" ng-model="issue.year">
+                    </div>
+                </div>
             </div>
         </form>
     </div>

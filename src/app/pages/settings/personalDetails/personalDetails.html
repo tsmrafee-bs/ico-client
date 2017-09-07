@@ -14,6 +14,20 @@
                 <input type="text" ng-change="accountInfoChanged('id_number')" ng-model="administrator.id_number" class="form-control" placeholder="E.g 891218666987">
             </div>
             <div class="form-group">
+                <label><strong>Date of birth</strong></label>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <input class="form-control" placeholder="Month" type="text" ng-model="birth.month">
+                    </div>
+                    <div class="col-sm-4">
+                        <input class="form-control" placeholder="Day" type="text" ng-model="birth.day">
+                    </div>
+                    <div class="col-sm-4">
+                        <input class="form-control" placeholder="Year" type="text" ng-model="birth.year">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
                 <label><strong>Nationality</strong></label>
                 <country-select class="form-control pointer" ng-change="accountInfoChanged('nationality')" data-ng-model="administrator.nationality"></country-select>
             </div>
@@ -25,7 +39,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <button ng-click="updateAdministratorAccount()" class="btn btn-primary pull-right">Save</button>
+                <button ng-click="updateAdministratorAccount()" ng-disabled="!administrator.id_number || !birth.month || !birth.day || !birth.year || !administrator.first_name || !administrator.last_name || !administrator.nationality" class="btn btn-primary pull-right">Save</button>
             </div>
         </div>
     </div>

@@ -65,6 +65,9 @@
                             }
                         }
                     }
+                    if($scope.status == 'verified'){
+                        $scope.goToNextView();
+                    }
                     $scope.loadingDocumentsIDView = false;
                 }
             }).catch(function (error) {
@@ -80,7 +83,7 @@
                 return;
             } else {
                 for(var i = 0; i < documentsArray.length; i++){
-                    if(documentsArray[i].verified === status){
+                    if(documentsArray[i].status === status){
                         verifiedStatus = true;
                         break;
                     }

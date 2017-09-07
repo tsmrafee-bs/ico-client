@@ -38,6 +38,11 @@
         $scope.addDocument = function () {
             $scope.addingDocument = true;
             $scope.userDocumentParams['document_type'] = vm.documentTypeOptionsObj[$scope.userDocumentParams['document_type']];
+            var metadata = {
+                "issued_by" : $scope.issued_by,
+                "issued_date" : $scope.issue.year+"-"+$scope.issue.month+"-"+$scope.issue.day
+            };
+            $scope.userDocumentParams['metadata'] = JSON.stringify(metadata);
             Upload.upload({
                 url: environmentConfig.API + '/user/documents/',
                 data: $scope.userDocumentParams,

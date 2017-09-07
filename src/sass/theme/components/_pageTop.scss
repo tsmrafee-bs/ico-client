@@ -9,7 +9,7 @@
   padding: 0 4px 0 17px;
 
   &.scrolled {
-    background-color: rgba(40, 153, 40, 0.8)
+    background-color: $primary;
   }
 }
 
@@ -31,6 +31,10 @@ a.al-logo {
   span {
     color: $primary;
   }
+}
+
+.logo-echarge {
+  height: 80%;
 }
 
 .user-profile {

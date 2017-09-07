@@ -46,7 +46,7 @@
         }
 
         $scope.addressCopied = function(){
-            toastr.success('Address copies','Message');
+            toastr.success('Address copied');
         }
     }
 

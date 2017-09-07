@@ -19,6 +19,16 @@
             <br>
             <p ng-bind="document.verified"></p>
         </div>
+        <div class="form-group">
+            <label><strong>Issued by</strong></label>
+            <br>
+            <p ng-bind="metadata.issued_by"></p>
+        </div>
+        <div class="form-group">
+            <label><strong>Issued date</strong></label>
+            <br>
+            <p ng-bind="metadata.issued_date"></p>
+        </div>
     </div>
     <div class="modal-footer">
         <button ng-click="$dismiss()"  type="button" class="btn btn-primary pull-right">Close</button>

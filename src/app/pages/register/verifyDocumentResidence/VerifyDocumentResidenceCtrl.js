@@ -66,6 +66,10 @@
                             }
                         }
                     }
+
+                    if($scope.status == 'verified'){
+                        $scope.goToNextView();
+                    }
                 }
             }).catch(function (error) {
                 $scope.loadingDocumentsResidenceView = false;

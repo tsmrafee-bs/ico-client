@@ -12,7 +12,8 @@
         $scope.loadingBasicInfoView = true;
         $scope.showAuthNav = false;
         $scope.address = {};
-        vm.user = {};
+        $scope.user = {};
+        $scope.birth = {};
 
         vm.getUserInfo = function () {
             $http.get(environmentConfig.API + '/user/', {
@@ -23,6 +24,18 @@
             }).then(function (res) {
                 if (res.status === 200) {
                     $scope.user = res.data.data;
+                    if($scope.user.birth_date){
+                        var nums = $scope.user.birth_date.split("-");
+                        if(nums.length == 3){
+                            $scope.birth.year = nums[0];
+                            $scope.birth.month = nums[1];
+                            $scope.birth.day = nums[2];
+                        }
+                    }
+
+                    if($scope.user.status == true) {
+                        $scope.goToNextView();
+                    }
                     $scope.showAuthNav = true;
                     vm.getUserAddress();
                 }
@@ -53,9 +66,10 @@
         $scope.updateUserInfo = function () {
             $scope.loadingBasicInfoView = true;
             $http.patch(environmentConfig.API + '/user/', {
-                first_name: vm.user.first_name,
-                id_number: vm.user.id_number,
-                last_name: vm.user.last_name
+                first_name: $scope.user.first_name,
+                id_number: $scope.user.id_number,
+                last_name: $scope.user.last_name,
+                birth_date: $scope.birth.year+"-"+$scope.birth.month+"-"+$scope.birth.day
             }, {
                 headers: {
                     'Content-Type': 'application/json',
