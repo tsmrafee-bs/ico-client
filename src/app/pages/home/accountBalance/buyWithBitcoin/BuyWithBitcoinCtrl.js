@@ -45,7 +45,7 @@
                 }
             }).catch(function (error) {
                 $scope.loadingEtheriumView = false;
-                errorToasts.evaluateErrors(error.data);
+                errorToasts.evaluateErrors({message: "Failed to load ECH rates in XBT."});
             });
         }
         $http.post(environmentConfig.XBT_API + "/user/",{}, {
@@ -62,7 +62,15 @@
         });
 
         $scope.placeQuote = function(btc){
-            var btcint = btc * Math.pow(10, $scope.divisibilityBtc);
+            var btcint = btc.toFixed($scope.divisibilityBtc);
+            for(var i=0;i<$scope.divisibilityBtc;i++){
+                btcint = btcint*10;
+            }
+            btcint = btcint.toFixed(0);
+            if($rootScope.transactionsLimitExceeded) {
+                errorToasts.evaluateErrors({message: "You have reached your limit of 10 transactions."});
+                return;
+            }
             //if($rootScope.allVerified === false) {
             //    errorToasts.evaluateErrors({message: "Please get verified."});
             //    return;

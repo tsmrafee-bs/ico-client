@@ -44,7 +44,7 @@
                 }
             }).catch(function (error) {
                 $scope.loadingEtheriumView = false;
-                errorToasts.evaluateErrors(error.data);
+                errorToasts.evaluateErrors({message: "Failed to load ECH rates in ETH."});
             });
         }
         $http.get(environmentConfig.ETH_API + "/user/", {
@@ -61,7 +61,15 @@
         });
 
         $scope.placeQuoteEth = function(eth){
-            var ethint = eth * Math.pow(10, $scope.divisibilityEth);
+            var ethint = eth.toFixed($scope.divisibilityEth);
+            for(var i=0;i<$scope.divisibilityEth;i++){
+                ethint = ethint*10;
+            }
+            ethint = ethint.toFixed(0);
+            if($rootScope.transactionsLimitExceeded) {
+                errorToasts.evaluateErrors({message: "You have reached your limit of 10 transactions."});
+                return;
+            }
             //if($rootScope.allVerified === false) {
             //    errorToasts.evaluateErrors({message: "Please get verified."});
             //    return;

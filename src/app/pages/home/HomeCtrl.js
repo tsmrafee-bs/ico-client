@@ -48,6 +48,43 @@
         $scope.addressCopied = function(){
             toastr.success('Address copied');
         }
+
+        $scope.getLatestTransactions = function(){
+            if(vm.token) {
+                var transactionsUrl = environmentConfig.API + "/transactions/";
+
+                $http.get(transactionsUrl, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': vm.token
+                    }
+                }).then(function (res) {
+                    $scope.loadingTransactions = false;
+                    if (res.status === 200) {
+                        $scope.transactionsData = res.data.data;
+                        $scope.transactions = $scope.transactionsData.results;
+                        
+                        $scope.transactionsInEch = $scope.transactions.filter(function(node){
+                            return node.currency.code == 'ECH';
+                        });
+
+                        if($scope.transactionsInEch.length >= 10) {
+                            $rootScope.transactionsLimitExceeded = true;
+                        }
+                        else {
+                            $rootScope.transactionsLimitExceeded = false;
+                        }
+                    }
+                }).catch(function (error) {
+                    if (error.status == 403) {
+                        errorHandler.handle403();
+                        return
+                    }
+                    errorToasts.evaluateErrors(error.data);
+                });
+            }
+        };
+        $scope.getLatestTransactions();
     }
 
 })();
