@@ -66,14 +66,14 @@
                 ethint = ethint*10;
             }
             ethint = ethint.toFixed(0);
+            if($rootScope.allVerified === false) {
+               errorToasts.evaluateErrors({message: "You are not yet fully verified. Please complete the details above. Our team will review your details and get to you as soon as possible."});
+               return;
+            }
             if($rootScope.transactionsLimitExceeded) {
                 errorToasts.evaluateErrors({message: "You have reached your limit of 10 transactions."});
                 return;
             }
-            //if($rootScope.allVerified === false) {
-            //    errorToasts.evaluateErrors({message: "Please get verified."});
-            //    return;
-            //}
             $http({
                 method: 'POST',
                 url: environmentConfig.ICO_API + '/user/icos/' + $scope.currency.id + '/quotes/',
@@ -131,7 +131,7 @@
                         $scope.completeEth()
                     }
                 });
-            }, 60 * 1000);
+            }, 10 * 1000);
 
             $scope.ethTimeout = $timeout(function () {
                 $scope.toggleBuyEtherView();

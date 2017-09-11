@@ -13,7 +13,7 @@
         $scope.loadingRegisterProgressView = true;
         $scope.emailVerified = false;
         $scope.mobileVerified = false;
-        $scope.addressVerified = false;
+        $scope.addressVerified = "n";
         $scope.idDocumentsVerified = 'n';
         $scope.residenceDocumentsVerified = 'n';
         $scope.ethereumAddressVerified = true;
@@ -33,8 +33,16 @@
                 if (res.status === 200) {
                     $scope.user = res.data.data;
                     vm.checkingEmailVerfication(res.data.data.email);
-                    if($scope.user.status == true) {
-                        $scope.addressVerified = true;
+                    if($scope.user.verified == true) {
+                        $scope.addressVerified = "v";
+                    }
+                    else if($scope.user.birth_date){
+                        $scope.addressVerified = "p";
+                    }
+
+                    if($scope.user.kyc_verified == true){
+                        $rootScope.allVerified = true;
+                        $scope.allVerified = true;
                     }
                 }
             }).catch(function (error) {
@@ -99,17 +107,17 @@
                 return 'n';
             } else {
                 for(var i = 0; i < documentsArray.length; i++){
-                    if(documentsArray[i].status === 'Verified'){
+                    if(documentsArray[i].status === 'verified'){
                         return 'v';
                     }
                 }
                 for(var i = 0; i < documentsArray.length; i++){
-                    if(documentsArray[i].status === 'Pending'){
+                    if(documentsArray[i].status === 'pending'){
                         return 'p';
                     }
                 }
                 for(var i = 0; i < documentsArray.length; i++){
-                    if(documentsArray[i].status === 'Declined'){
+                    if(documentsArray[i].status === 'declined'){
                         return 'd';
                     }
                 }
@@ -137,10 +145,7 @@
             });
         };
         vm.getEthereumAddresses();
-
-        if($scope.ethereumAddressVerified && $scope.checkDocumentsArrayVerification && $scope.idDocumentsVerified && $scope.addressVerified && $scope.mobileVerified && $scope.emailVerified){
-            $rootScope.allVerified = true;
-        }
+        
 
     }
 })();

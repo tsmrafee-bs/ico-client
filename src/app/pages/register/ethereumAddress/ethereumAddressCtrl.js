@@ -52,7 +52,7 @@
         };
 
         $scope.addEthereumAddress = function(address){
-            $http.post(environmentConfig.API + '/user/bitcoin-accounts/',{address: address}, {
+            $http.post(environmentConfig.API + '/user/bitcoin-accounts/',{address: address, crypto_type: 'ethereum'}, {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': vm.token

@@ -70,6 +70,8 @@
         vm.getBankAccounts();
 
         $scope.addBankAccount = function (newBitcoinAddress) {
+            
+            newBitcoinAddress.crypto_type = 'ethereum';
             $http.post(environmentConfig.API + '/user/bitcoin-accounts/', newBitcoinAddress, {
                 headers: {
                     'Content-Type': 'application/json',
