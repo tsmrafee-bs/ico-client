@@ -20,7 +20,7 @@
       newestOnTop: true,
       positionClass: 'toast-bottom-right',
       preventDuplicates: false,
-      preventOpenDuplicates: false,
+      preventOpenDuplicates: true,
       target: 'body'
     });
   }

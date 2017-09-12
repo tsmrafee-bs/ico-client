@@ -41,7 +41,6 @@
                     }
 
                     if($scope.user.kyc_verified == true){
-                        $rootScope.allVerified = true;
                         $scope.allVerified = true;
                     }
                 }
@@ -135,6 +134,9 @@
                 if (res.status === 200) {
                     if(res.data.data.length > 0){
                         $scope.ethereumAddressVerified = true;
+                        if($scope.allVerified){
+                            $rootScope.allVerified = true;
+                        }
                     } else {
                         $scope.ethereumAddressVerified = false;
                     }
