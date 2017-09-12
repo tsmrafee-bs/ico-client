@@ -33,10 +33,10 @@
                 if (res.status === 200) {
                     $scope.user = res.data.data;
                     vm.checkingEmailVerfication(res.data.data.email);
-                    if($scope.user.verified == true) {
+                    if($scope.user.status =='verified') {
                         $scope.addressVerified = "v";
                     }
-                    else if($scope.user.birth_date){
+                    else {
                         $scope.addressVerified = "p";
                     }
 

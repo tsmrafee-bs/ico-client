@@ -50,17 +50,17 @@
                         return (element.verified == 'Pending');
                     });
 
-                    var statusCheck = vm.checkDocumentsArrayVerification($scope.documents, "Varified");
+                    var statusCheck = vm.checkDocumentsArrayVerification($scope.documents, "verified");
                     if(statusCheck === true) {
                         $scope.status = 'verified';
                     }
                     else {
-                        statusCheck = vm.checkDocumentsArrayVerification($scope.documents, "Pending");
+                        statusCheck = vm.checkDocumentsArrayVerification($scope.documents, "pending");
                         if(statusCheck === true) {
                             $scope.status = 'pending';
                         }
                         else {
-                            statusCheck = vm.checkDocumentsArrayVerification($scope.documents, "Declined");
+                            statusCheck = vm.checkDocumentsArrayVerification($scope.documents, "declined");
                             if(statusCheck === true) {
                                 $scope.status = 'declined';
                             }
@@ -84,7 +84,7 @@
                 return;
             } else {
                 for(var i = 0; i < documentsArray.length; i++){
-                    if(documentsArray[i].verified === status){
+                    if(documentsArray[i].status === status){
                         verifiedStatus = true;
                         break;
                     }
