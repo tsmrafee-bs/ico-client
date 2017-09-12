@@ -36,14 +36,41 @@
                     if($scope.user.status =='verified') {
                         $scope.addressVerified = "v";
                     }
-                    else {
+                    else if($scope.user.status =='pending') {
                         $scope.addressVerified = "p";
+                        return;
+                    }
+                    else {
+                        return;
                     }
 
                     if($scope.user.kyc_verified == true){
                         $scope.allVerified = true;
+                        if($scope.ethereumAddressVerified){
+                            $rootScope.allVerified = true;
+                        }
                     }
+                    $http.get(environmentConfig.API + '/user/address/', {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': vm.token
+                        }
+                    }).then(function (res) {
+                        if (res.status === 200) {
+                            $scope.user = res.data.data;
+                            if($scope.user.status =='verified') {
+                                $scope.addressVerified = "v";
+                            }
+                             else if($scope.user.status =='pending') {
+                                $scope.addressVerified = "p";
+                            }
+                        }
+                    }).catch(function (error) {
+                        $scope.loadingRegisterProgressView = false;
+                        errorToasts.evaluateErrors(error.data);
+                    });
                 }
+                
             }).catch(function (error) {
                 $scope.loadingRegisterProgressView = false;
                 errorToasts.evaluateErrors(error.data);
