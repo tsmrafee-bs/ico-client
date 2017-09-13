@@ -60,8 +60,7 @@ angular.module('BlurAdmin', [
                     });
                 }
             };
-            getUserInfo();
-
+            
             if(newUrlLastElement == 'login'){
                 cookieManagement.deleteCookie('TOKEN');
                 cookieManagement.deleteCookie('USER');
@@ -75,12 +74,15 @@ angular.module('BlurAdmin', [
                     || newUrl.indexOf('mobile/confirm') > 0 || newUrl.indexOf('email/verify') > 0
                     || newUrl.indexOf('email-verify/') > 0 || newUrl.indexOf('password-reset-confirm/') > 0
                     || newUrl.indexOf('document/verify/ID') > 0 || newUrl.indexOf('/document/verify/residence') > 0
-                    || newUrl.indexOf('ethereum/address') > 0 || newUrl.indexOf('identity/verification') > 0)
+                    || newUrl.indexOf('ethereum/address') > 0 || newUrl.indexOf('identity/verification') > 0
+                    || newUrl.indexOf('authentication/multi-factor/sms') > 0 || newUrl.indexOf('/authentication/multi-factor/verify/token') > 0
+                    || newUrl.indexOf('/authentication/multi-factor') > 0)
                 {
                     $rootScope.notRegistering = false;
                 } else if (token) {
                     $rootScope.notRegistering = true;
                     $rootScope.gotToken = true;
+                    getUserInfo();
                 } else {
                     $rootScope.gotToken = false;
                     $location.path('/login');
