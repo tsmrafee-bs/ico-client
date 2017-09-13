@@ -14,7 +14,7 @@
             $scope.makingEtherPayment = !$scope.makingEtherPayment;
         }
 
-        $http.get(environmentConfig.ICO_API + '/user/icos/?enabled=True', {
+        $http.get(environmentConfig.ICO_API + '/user/icos/?currency__code=ECH', {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': vm.token
