@@ -6,10 +6,10 @@
         <h4 class="modal-title" id="myModalLabel">Add document</h4>
     </div>
     <div class="modal-body">
-        <div class="divider">
-            <img ng-show="userDocumentParams.file" ngf-thumbnail="userDocumentParams.file" height="500px" width="100%">
+        <div class="col-md-6 col-lg-6" ng-show="userDocumentParams.file">
+            <img ngf-thumbnail="userDocumentParams.file" height="500px" width="100%">
         </div>
-        <form name="addDocumentForm" novalidate>
+        <form class="col-md-6 col-lg-6" name="addDocumentForm" novalidate>
             <fieldset class="divider">
                 <input ng-change="documentChanged()" type="file" ngf-select ng-model="userDocumentParams.file" name="file"
                        accept="image/*" ngf-max-size="10MB" required>
@@ -34,6 +34,11 @@
                         <input class="form-control" placeholder="Year" type="text" ng-model="expire.year">
                     </div>
                 </div>
+            </div>
+            <div class="form-group">
+                <label><strong>ID/Passport number for this document</strong> <span class="required-icon">*</span></label>
+                <br>
+                <input class="form-control" placeholder="ID or passport number" type="text" ng-model="id_number">
             </div>
             <div class="form-group">
                 <label><strong>Issued by</strong> <span class="required-icon">*</span></label>

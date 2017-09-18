@@ -40,7 +40,8 @@
             $scope.userDocumentParams['document_type'] = vm.documentTypeOptionsObj[$scope.userDocumentParams['document_type']];
             var metadata = {
                 "issued_by" : $scope.issued_by,
-                "issued_date" : $scope.issue.year+"-"+$scope.issue.month+"-"+$scope.issue.day
+                "issued_date" : $scope.issue.year+"-"+$scope.issue.month+"-"+$scope.issue.day,
+                "id_number" : $scope.id_number
             };
             $scope.userDocumentParams['metadata'] = JSON.stringify(metadata);
             Upload.upload({

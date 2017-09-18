@@ -26,16 +26,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row form-group">
+                    <!-- <div class="row form-group">
                         <div class="col-sm-3 identity-label">
                             <p>ID number</p>
                         </div>
                         <div class="col-sm-9">
                             <div class="col-sm-12">
-                                <input class="form-control" ng-change="userChanged('id_number')" placeholder="ID or passport number" type="text" ng-model="user.id_number">
+                                <input class="form-control" ng-change="userChanged('id_number')" placeholder="ID or passport number" name="ID_number" type="text" ng-model="user.id_number">
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="row form-group">
                         <div class="col-sm-3 identity-label">
                             <p>Date of birth</p>
@@ -79,7 +79,7 @@
                                        ng-model="address.postal_code">
                             </div>
                             <div class="col-sm-12">
-                                <button ng-click="updateUserInfo()" ng-disabled="!user.id_number || !birth.month || !birth.day || !birth.year || !address.line_1 || !address.city || !address.state_province || !address.postal_code || !address.country" class="btn btn-primary pull-right identity-button">
+                                <button ng-click="updateUserInfo()" ng-disabled="!birth.month || !birth.day || !birth.year || !address.line_1 || !address.city || !address.postal_code || !address.country" class="btn btn-primary pull-right identity-button">
                                     Next
                                 </button>
                                 <button ng-click="goToNextView()" class="btn btn-danger pull-left identity-button">

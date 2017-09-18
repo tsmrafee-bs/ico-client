@@ -11,7 +11,6 @@
 
         $scope.makingPayment = false;
         $scope.reference = "";
-
         $scope.toggleBuyEuroView = function () {
             $scope.makingPayment = !$scope.makingPayment;
         }

@@ -9,7 +9,6 @@
         var vm = this;
         vm.token = cookieManagement.getCookie('TOKEN');
         $scope.makingEtherPayment = true;
-
         $scope.toggleBuyEtherView = function () {
             $scope.makingEtherPayment = !$scope.makingEtherPayment;
         }
@@ -182,9 +181,12 @@
             localStorage.removeItem("quoteEth");
             $timeout.cancel($scope.ethTimeout);
             $interval.cancel($scope.ethInterval);
+            $scope.toggleBuyEtherView();
             $scope.eth = null;
             $scope.ethWatt = null;
-            $location.path('/transactions');
+            if($location.$$path == '/home' && $rootScope.buyPage == 'ether') {
+                $location.path('/transactions');
+            }
         }
     }
 
