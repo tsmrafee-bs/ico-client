@@ -69,7 +69,7 @@
             
             if($rootScope.allVerified == false) {
                errorToasts.evaluateErrors({message: "You are not yet fully verified. Please complete the details above. Our team will review your details and get to you as soon as possible."});
-               //return;
+               return;
             }
             if($rootScope.transactionsLimitExceeded) {
                 errorToasts.evaluateErrors({message: "You have reached your limit of 10 transactions."});
