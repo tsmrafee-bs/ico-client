@@ -98,7 +98,8 @@
                     var qouteBtcTime = 600000;
                     localStorage.removeItem("quoteBtc");
                     localStorage.setItem("quoteBtc", JSON.stringify(quoteBtc));
-                    localStorage.setItem("btc", btc+'');
+                    localStorage.removeItem("btc");
+                    localStorage.setItem("btc", btc);
                     $scope.startBtcTimeout(qouteBtcTime, $scope.quotebtc.id);
                 }
             }).catch(function (error) {
