@@ -55,6 +55,7 @@
         }).then(function (res) {
             if (res.status === 201 || res.status === 200) {
                 $scope.bitcoinAddress = res.data;
+                console.log($scope.bitcoinAddress);
             }
         }).catch(function (error) {
             errorToasts.evaluateErrors(error.data);
@@ -97,6 +98,7 @@
                     var qouteBtcTime = 600000;
                     localStorage.removeItem("quoteBtc");
                     localStorage.setItem("quoteBtc", JSON.stringify(quoteBtc));
+                    localStorage.setItem("btc", btc+'');
                     $scope.startBtcTimeout(qouteBtcTime, $scope.quotebtc.id);
                 }
             }).catch(function (error) {
@@ -157,6 +159,7 @@
 
             if(timeLeft>0){
                 $scope.startBtcTimeout(timeLeft);
+                $scope.btc = localStorage.getItem("btc");
             }
             else{
                 $scope.toggleBuyBitcoinView();

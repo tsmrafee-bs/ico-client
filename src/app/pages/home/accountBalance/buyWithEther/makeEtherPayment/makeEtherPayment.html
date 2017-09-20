@@ -13,7 +13,7 @@
             </div>
             <div class="col-md-12">
                 <div class="col-md-6 make-payment-image">
-                    <img ng-src="{{ethereumAddress.crypto.qr_code}}" width="100%"/>
+                    <img ng-src="{{'https://chart.googleapis.com/chart?cht=qr&choe=UTF-8&chs=300&chl=' + ethereumAddress.crypto.payment_uri + '?value=' + eth}}" width="100%"/>
                 </div>
                 <div class="col-md-6" style="float: right">
                     <div class="row make-payment-scan">
@@ -21,7 +21,7 @@
                     </div>
                     <div class="row">
                         <button class="btn btn-primary make-payment-copy" ngclipboard
-                                data-clipboard-text="{{ethereumAddress.crypto.address}}" ng-click="addressCopied()">
+                                data-clipboard-text="{{ethereumAddress.crypto.payment_uri + '?value=' + eth}}" ng-click="addressCopied()">
                             Copy to clipboard
                         </button>
                     </div>

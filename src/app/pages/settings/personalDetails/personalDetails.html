@@ -9,21 +9,25 @@
                 <label><strong>Last name</strong></label>
                 <input type="text" ng-change="accountInfoChanged('last_name')" ng-model="administrator.last_name" class="form-control" placeholder="E.g Nakomoto">
             </div>
-            <div class="form-group">
+            
+            <!-- <div class="form-group">
                 <label><strong>Identity number</strong></label>
                 <input type="text" ng-change="accountInfoChanged('id_number')" ng-model="administrator.id_number" class="form-control" placeholder="E.g 891218666987">
-            </div>
+            </div> -->
             <div class="form-group">
                 <label><strong>Date of birth</strong></label>
                 <div class="row">
                     <div class="col-sm-4">
-                        <input class="form-control" placeholder="Month" type="text" ng-model="birth.month">
+                        <Select class="form-control" ng-model="birth.day" ng-options="n for n in [] | range:1:32">
+                        </Select>
                     </div>
                     <div class="col-sm-4">
-                        <input class="form-control" placeholder="Day" type="text" ng-model="birth.day">
+                        <Select class="form-control" ng-model="birth.month" ng-options="n for n in [] | range:1:13">
+                        </Select>
                     </div>
                     <div class="col-sm-4">
-                        <input class="form-control" placeholder="Year" type="text" ng-model="birth.year">
+                        <Select class="form-control" ng-model="birth.year" ng-options="n for n in [] | range:1950:2001">
+                        </Select>
                     </div>
                 </div>
             </div>

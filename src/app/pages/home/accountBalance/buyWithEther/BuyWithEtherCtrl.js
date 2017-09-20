@@ -54,6 +54,7 @@
         }).then(function (res) {
             if (res.status === 201 || res.status === 200) {
                 $scope.ethereumAddress = res.data.data;
+                console.log($scope.ethereumAddress);
             }
         }).catch(function (error) {
             errorToasts.evaluateErrors(error.data);
@@ -67,7 +68,7 @@
             ethint = ethint.toFixed(0);
             if($rootScope.allVerified === false) {
                errorToasts.evaluateErrors({message: "You are not yet fully verified. Please complete the details above. Our team will review your details and get to you as soon as possible."});
-               return;
+               //return;
             }
             if($rootScope.transactionsLimitExceeded) {
                 errorToasts.evaluateErrors({message: "You have reached your limit of 10 transactions."});
@@ -95,6 +96,8 @@
                     var qouteEthTime = 600000;
                     localStorage.removeItem("quoteRth");
                     localStorage.setItem("quoteEth", JSON.stringify(quoteEth));
+                    localStorage.removeItem("eth");
+                    localStorage.setItem("eth", eth);
                     $scope.startEthTimeout(qouteEthTime, $scope.quoteeth.id);
                 }
             }).catch(function (error) {
@@ -149,12 +152,12 @@
         else {
             var data = JSON.parse(quote);
             $scope.quoteeth = data.quote;
-            console.log($scope.quoteeth)
             var currentDate = new Date();
             var timeLeft = parseInt(data.time) - currentDate.getTime() + 600000;
 
             if(timeLeft>0){
                 $scope.startEthTimeout(timeLeft);
+                $scope.eth = localStorage.getItem("eth");
             }
             else{
                 $scope.toggleBuyEtherView();
