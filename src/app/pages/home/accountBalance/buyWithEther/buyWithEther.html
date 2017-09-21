@@ -6,16 +6,25 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label"><strong>ETH</strong></label>
                     <div class="col-sm-10">
-                        <input type="number" step="any" ng-model="eth" class="form-control" placeholder="0.00000000" ng-change="ethWatt = +(eth / ethRate).toFixed(currency.currency.divisibility)">
+                        <input type="number" step="any" ng-model="eth" class="form-control" placeholder="0.00000000" ng-change="ethWatt = +(eth / ethRate).toFixed(currency.currency.divisibility); eur = +(ethWatt * eurRate).toFixed(divisibilityEur)">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label"><strong>{{currency.currency.code}}</strong></label>
                     <div class="col-sm-10">
-                        <input type="number" step="any" ng-model="ethWatt" class="form-control" placeholder="0.00" ng-change="eth = +(ethWatt * ethRate).toFixed(divisibilityEth)">
+                        <input type="number" step="any" ng-model="ethWatt" class="form-control" placeholder="0.00" ng-change="eth = +(ethWatt * ethRate).toFixed(divisibilityEth);  eur = +(ethWatt * eurRate).toFixed(divisibilityEur)">
                     </div>
                 </div>
-                <br>
+                <div class="form-group">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-10">
+                        <p ng-show="eur" class="eur-amount">€<span
+                            title="{{ eur | currencyModifiersFilter: divisibilityEur | preciseRound: divisibilityEur}}"
+                            class="transactions-list-element"
+                            ng-bind="eur | currencyModifiersFilter: divisibilityEur | preciseRound: divisibilityEur"></span></p>
+                        <p ng-hide="eur" class="eur-amount">€0.00</p>
+                    </div>
+                </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <button ng-click="placeQuoteEth(eth)" class="btn btn-primary pull-right">Next</button>

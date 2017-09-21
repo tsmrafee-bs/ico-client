@@ -9,6 +9,8 @@
         var vm = this;
         vm.token = cookieManagement.getCookie('TOKEN');
         $scope.makingEtherPayment = true;
+        $scope.eth = null;
+        $scope.ethWatt = null;
         $scope.toggleBuyEtherView = function () {
             $scope.makingEtherPayment = !$scope.makingEtherPayment;
         }
@@ -45,7 +47,25 @@
                 $scope.loadingEtheriumView = false;
                 errorToasts.evaluateErrors({message: "Failed to load ECH rates in ETH."});
             });
+            $http.get(environmentConfig.ICO_API + '/user/icos/' + $scope.currency.id + '/rates/?currency__code=EUR', {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': vm.token
+                }
+            }).then(function (res) {
+                if (res.status === 201 || res.status === 200) {
+                    var data = res.data.data.results[0];
+                    var rate = data.rate;
+                    $scope.divisibilityEur = data.currency.divisibility;
+                    $scope.eurRate = rate / Math.pow(10,$scope.divisibilityEur);
+                    console.log(data);
+                }
+            }).catch(function (error) {
+                $scope.loadingEtheriumView = false;
+                errorToasts.evaluateErrors({message: "Failed to load ECH rates in EUR."});
+            });
         }
+
         $http.get(environmentConfig.ETH_API + "/user/", {
             headers: {
                 'Content-Type': 'application/json',
