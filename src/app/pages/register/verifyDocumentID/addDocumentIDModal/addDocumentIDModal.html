@@ -6,10 +6,13 @@
         <h4 class="modal-title" id="myModalLabel">Add document</h4>
     </div>
     <div class="modal-body">
-        <div class="divider">
-            <img ng-show="userDocumentParams.file" ngf-thumbnail="userDocumentParams.file" height="500px" width="100%">
+        <div class="col-md-6 col-lg-6" ng-show="userDocumentParams.file">
+            <img ng-show="!addingDocument" ngf-thumbnail="userDocumentParams.file" height="375px" width="100%">
+            <div ng-show="addingDocument" style="text-align:center">
+                <loading-image></loading-image>
+            </div>
         </div>
-        <form name="addDocumentForm" novalidate>
+        <form class="col-md-6 col-lg-6" name="addDocumentForm" novalidate>
             <fieldset class="divider">
                 <input ng-change="documentChanged()" type="file" ngf-select ng-model="userDocumentParams.file" name="file"
                        accept="image/*" ngf-max-size="10MB" required>
@@ -25,15 +28,23 @@
                 <br>
                 <div class="row">
                     <div class="col-sm-4">
-                        <input class="form-control" placeholder="Month" type="text" ng-model="expire.month">
+                        <Select class="form-control" ng-model="expire.day" ng-options="n for n in [] | range:1:32">
+                        </Select>
                     </div>
                     <div class="col-sm-4">
-                        <input class="form-control" placeholder="Day" type="text" ng-model="expire.day">
+                        <Select class="form-control" ng-model="expire.month" ng-options="n for n in [] | range:1:13">
+                        </Select>
                     </div>
                     <div class="col-sm-4">
-                        <input class="form-control" placeholder="Year" type="text" ng-model="expire.year">
+                        <Select class="form-control" ng-model="expire.year" ng-options="n for n in [] | range:1950:2021">
+                        </Select>
                     </div>
                 </div>
+            </div>
+            <div class="form-group">
+                <label><strong>ID/Passport number for this document</strong> <span class="required-icon">*</span></label>
+                <br>
+                <input class="form-control" placeholder="ID or passport number" type="text" ng-model="id_number">
             </div>
             <div class="form-group">
                 <label><strong>Issued by</strong> <span class="required-icon">*</span></label>
@@ -45,13 +56,16 @@
                 <br>
                 <div class="row">
                     <div class="col-sm-4">
-                        <input class="form-control" placeholder="Month" type="text" ng-model="issue.month">
+                        <Select class="form-control" ng-model="issue.day" ng-options="n for n in [] | range:1:32">
+                        </Select>
                     </div>
                     <div class="col-sm-4">
-                        <input class="form-control" placeholder="Day" type="text" ng-model="issue.day">
+                        <Select class="form-control" ng-model="issue.month" ng-options="n for n in [] | range:1:13">
+                        </Select>
                     </div>
                     <div class="col-sm-4">
-                        <input class="form-control" placeholder="Year" type="text" ng-model="issue.year">
+                        <Select class="form-control" ng-model="issue.year" ng-options="n for n in [] | range:1950:2021">
+                        </Select>
                     </div>
                 </div>
             </div>

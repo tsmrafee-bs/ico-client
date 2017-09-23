@@ -8,13 +8,14 @@
         </div>
         <h1>Add ethereum address</h1>
 
-        <p>Note that this your ethereum receiving address for ECH tokens. Please make sure that the address is
+        <p ng-show="statusPending">Note that this your ethereum receiving address for ECH tokens. Please make sure that the address is
             correct.</p>
+        <p ng-hide="statusPending">We’ve send you a verification email to verify your ethereum address.</p>
         <br>
 
         <form class="form-horizontal">
             <div>
-                <div class="row form-group">
+                <div class="row form-group" ng-show="statusPending">
                     <div class="col-sm-12 input-block">
                         <input class="form-control" placeholder="Please paste a valid ethereum address" type="text"
                                ng-model="ethereum.address">

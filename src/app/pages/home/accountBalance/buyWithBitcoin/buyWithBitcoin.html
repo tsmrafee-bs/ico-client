@@ -6,16 +6,25 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label"><strong>BTC</strong></label>
                     <div class="col-sm-10">
-                        <input type="number" step="any" ng-model="btc" class="form-control" placeholder="0.00000000" ng-change="btcWatt = +(btc / btcRate).toFixed(currency.currency.divisibility)">
+                        <input type="number" step="any" ng-model="btc" class="form-control" placeholder="0.00000000" ng-change="btcWatt = +(btc / btcRate).toFixed(currency.currency.divisibility); eurbtc = +(btcWatt * eurRate).toFixed(divisibilityEur)">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label"><strong>{{currency.currency.code}}</strong></label>
                     <div class="col-sm-10">
-                        <input type="number" step="any" ng-model="btcWatt" class="form-control" placeholder="0.00" ng-change="btc = +(btcWatt * btcRate).toFixed(divisibilityBtc)">
+                        <input type="number" step="any" ng-model="btcWatt" class="form-control" placeholder="0.00" ng-change="btc = +(btcWatt * btcRate).toFixed(divisibilityBtc); eurbtc = +(btcWatt * eurRate).toFixed(divisibilityEur)">
                     </div>
                 </div>
-                <br>
+                <div class="form-group">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-10">
+                        <p ng-show="eurbtc" class="eur-amount">€<span
+                            title="{{ eurbtc | currencyModifiersFilter: divisibilityEur | preciseRound: divisibilityEur}}"
+                            class="transactions-list-element"
+                            ng-bind="eurbtc | currencyModifiersFilter: divisibilityEur | preciseRound: divisibilityEur"></span></p>
+                        <p ng-hide="eurbtc" class="eur-amount">€0.00</p>
+                    </div>
+                </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <button ng-click="placeQuote(btc)" class="btn btn-primary pull-right">Next</button>

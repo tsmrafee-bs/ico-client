@@ -9,12 +9,11 @@
         var vm = this;
         vm.token = cookieManagement.getCookie('TOKEN');
         $scope.makingBitcoinPayment = true;
-
         $scope.toggleBuyBitcoinView = function () {
             $scope.makingBitcoinPayment = !$scope.makingBitcoinPayment;
         }
 
-        $http.get(environmentConfig.ICO_API + '/user/icos/?enabled=True', {
+        $http.get(environmentConfig.ICO_API + '/user/icos/?currency__code=ECH', {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': vm.token
@@ -56,6 +55,7 @@
         }).then(function (res) {
             if (res.status === 201 || res.status === 200) {
                 $scope.bitcoinAddress = res.data;
+                console.log($scope.bitcoinAddress);
             }
         }).catch(function (error) {
             errorToasts.evaluateErrors(error.data);
@@ -98,6 +98,8 @@
                     var qouteBtcTime = 600000;
                     localStorage.removeItem("quoteBtc");
                     localStorage.setItem("quoteBtc", JSON.stringify(quoteBtc));
+                    localStorage.removeItem("btc");
+                    localStorage.setItem("btc", btc);
                     $scope.startBtcTimeout(qouteBtcTime, $scope.quotebtc.id);
                 }
             }).catch(function (error) {
@@ -158,6 +160,7 @@
 
             if(timeLeft>0){
                 $scope.startBtcTimeout(timeLeft);
+                $scope.btc = localStorage.getItem("btc");
             }
             else{
                 $scope.toggleBuyBitcoinView();
@@ -184,9 +187,12 @@
             localStorage.removeItem("quoteBtc");
             $timeout.cancel($scope.btcTimeout);
             $interval.cancel($scope.btcInterval);
+            $scope.toggleBuyBitcoinView();
             $scope.btc = null;
             $scope.btcWatt = null;
-            $location.path('/transactions');
+            if($location.$$path == '/home' && $rootScope.buyPage == 'bitcoin') {
+                $location.path('/transactions');
+            }
         }
     }
 })();

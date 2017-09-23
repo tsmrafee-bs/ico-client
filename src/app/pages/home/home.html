@@ -1,3 +1,8 @@
+<div class="ico-banner" ng-show="ico_status != 'open'">
+     <p ng-show="ico_status == 'closed'">Thank you for participating in our ICO. The sale is now officially closed.</p> 
+     <p ng-show="ico_status == 'paused'">The ICO is temporarily paused and or offline. We’ll be back online shortly and keep you updated via email. Thank you for your patience.</p> 
+     <p ng-hide="ico_status">The ICO is not available.</p> 
+</div>
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <register-progress></register-progress>

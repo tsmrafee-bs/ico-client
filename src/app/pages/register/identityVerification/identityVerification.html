@@ -26,29 +26,32 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row form-group">
+                    <!-- <div class="row form-group">
                         <div class="col-sm-3 identity-label">
                             <p>ID number</p>
                         </div>
                         <div class="col-sm-9">
                             <div class="col-sm-12">
-                                <input class="form-control" ng-change="userChanged('id_number')" placeholder="ID or passport number" type="text" ng-model="user.id_number">
+                                <input class="form-control" ng-change="userChanged('id_number')" placeholder="ID or passport number" name="ID_number" type="text" ng-model="user.id_number">
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="row form-group">
                         <div class="col-sm-3 identity-label">
                             <p>Date of birth</p>
                         </div>
                         <div class="col-sm-9">
                             <div class="col-sm-4">
-                                <input class="form-control" placeholder="Month" type="text" ng-model="birth.month">
+                                <Select class="form-control" ng-model="birth.day" ng-options="n for n in [] | range:1:32">
+                                </Select>
                             </div>
                             <div class="col-sm-4">
-                                <input class="form-control" placeholder="Day" type="text" ng-model="birth.day">
+                                <Select class="form-control" ng-model="birth.month" ng-options="n for n in [] | range:1:13">
+                                </Select>
                             </div>
                             <div class="col-sm-4">
-                                <input class="form-control" placeholder="Year" type="text" ng-model="birth.year">
+                                <Select class="form-control" ng-model="birth.year" ng-options="n for n in [] | range:1950:2001">
+                                </Select>
                             </div>
                         </div>
                     </div>
@@ -79,7 +82,7 @@
                                        ng-model="address.postal_code">
                             </div>
                             <div class="col-sm-12">
-                                <button ng-click="updateUserInfo()" ng-disabled="!user.id_number || !birth.month || !birth.day || !birth.year || !address.line_1 || !address.city || !address.state_province || !address.postal_code || !address.country" class="btn btn-primary pull-right identity-button">
+                                <button ng-click="updateUserInfo()" ng-disabled="!birth.month || !birth.day || !birth.year || !address.line_1 || !address.city || !address.postal_code || !address.country" class="btn btn-primary pull-right identity-button">
                                     Next
                                 </button>
                                 <button ng-click="goToNextView()" class="btn btn-danger pull-left identity-button">

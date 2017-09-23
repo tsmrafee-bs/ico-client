@@ -14,6 +14,7 @@
         $scope.address = {};
         $scope.user = {};
         $scope.birth = {};
+        vm.user = {};
 
         vm.getUserInfo = function () {
             $http.get(environmentConfig.API + '/user/', {
@@ -27,9 +28,9 @@
                     if($scope.user.birth_date){
                         var nums = $scope.user.birth_date.split("-");
                         if(nums.length == 3){
-                            $scope.birth.year = nums[0];
-                            $scope.birth.month = nums[1];
-                            $scope.birth.day = nums[2];
+                            $scope.birth.year = parseInt(nums[0]);
+                            $scope.birth.month = parseInt(nums[1]);
+                            $scope.birth.day = parseInt(nums[2]);
                         }
                     }
 

@@ -9,12 +9,13 @@
         var vm = this;
         vm.token = cookieManagement.getCookie('TOKEN');
         $scope.makingEtherPayment = true;
-
+        $scope.eth = null;
+        $scope.ethWatt = null;
         $scope.toggleBuyEtherView = function () {
             $scope.makingEtherPayment = !$scope.makingEtherPayment;
         }
 
-        $http.get(environmentConfig.ICO_API + '/user/icos/?enabled=True', {
+        $http.get(environmentConfig.ICO_API + '/user/icos/?currency__code=ECH', {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': vm.token
@@ -46,7 +47,25 @@
                 $scope.loadingEtheriumView = false;
                 errorToasts.evaluateErrors({message: "Failed to load ECH rates in ETH."});
             });
+            $http.get(environmentConfig.ICO_API + '/user/icos/' + $scope.currency.id + '/rates/?currency__code=EUR', {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': vm.token
+                }
+            }).then(function (res) {
+                if (res.status === 201 || res.status === 200) {
+                    var data = res.data.data.results[0];
+                    var rate = data.rate;
+                    $scope.divisibilityEur = data.currency.divisibility;
+                    $scope.eurRate = rate / Math.pow(10,$scope.divisibilityEur);
+                    console.log(data);
+                }
+            }).catch(function (error) {
+                $scope.loadingEtheriumView = false;
+                errorToasts.evaluateErrors({message: "Failed to load ECH rates in EUR."});
+            });
         }
+
         $http.get(environmentConfig.ETH_API + "/user/", {
             headers: {
                 'Content-Type': 'application/json',
@@ -55,6 +74,7 @@
         }).then(function (res) {
             if (res.status === 201 || res.status === 200) {
                 $scope.ethereumAddress = res.data.data;
+                console.log($scope.ethereumAddress);
             }
         }).catch(function (error) {
             errorToasts.evaluateErrors(error.data);
@@ -96,6 +116,8 @@
                     var qouteEthTime = 600000;
                     localStorage.removeItem("quoteRth");
                     localStorage.setItem("quoteEth", JSON.stringify(quoteEth));
+                    localStorage.removeItem("eth");
+                    localStorage.setItem("eth", eth);
                     $scope.startEthTimeout(qouteEthTime, $scope.quoteeth.id);
                 }
             }).catch(function (error) {
@@ -150,12 +172,12 @@
         else {
             var data = JSON.parse(quote);
             $scope.quoteeth = data.quote;
-            console.log($scope.quoteeth)
             var currentDate = new Date();
             var timeLeft = parseInt(data.time) - currentDate.getTime() + 600000;
 
             if(timeLeft>0){
                 $scope.startEthTimeout(timeLeft);
+                $scope.eth = localStorage.getItem("eth");
             }
             else{
                 $scope.toggleBuyEtherView();
@@ -182,9 +204,12 @@
             localStorage.removeItem("quoteEth");
             $timeout.cancel($scope.ethTimeout);
             $interval.cancel($scope.ethInterval);
+            $scope.toggleBuyEtherView();
             $scope.eth = null;
             $scope.ethWatt = null;
-            $location.path('/transactions');
+            if($location.$$path == '/home' && $rootScope.buyPage == 'ether') {
+                $location.path('/transactions');
+            }
         }
     }
 

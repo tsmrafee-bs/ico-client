@@ -9,6 +9,7 @@
         return {
             restrict: 'E',
             require: '^parent',
+            controller: 'AccountBalanceCtrl',
             templateUrl: 'app/pages/home/accountBalance/accountBalance.html'
         };
     }

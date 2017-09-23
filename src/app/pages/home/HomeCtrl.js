@@ -10,6 +10,23 @@
         vm.token = cookieManagement.getCookie('TOKEN');
         $scope.loadingCurrencies = true;
         $scope.showView = '';
+        $scope.ico_status = 'open';
+
+        $http.get(environmentConfig.ICO_API + '/user/icos/?currency__code=ECH', {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': vm.token
+            }
+        }).then(function (res) {
+            if (res.status === 201 || res.status === 200) {
+                var data = res.data.data;
+                $scope.currency = res.data.data.results[0];
+                $scope.ico_status = $scope.currency.status;
+                $rootScope.ico_status = $scope.ico_status;
+            }
+        }).catch(function (error) {
+            errorToasts.evaluateErrors(error.data);
+        });
 
         vm.getUserAccounts = function(){
             if(vm.token) {

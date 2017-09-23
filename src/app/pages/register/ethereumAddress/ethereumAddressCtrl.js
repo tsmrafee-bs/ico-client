@@ -12,6 +12,7 @@
         $scope.ethereum = {address: ''};
         $scope.showAuthNav = false;
         $scope.loadingEtheriumView = true;
+        $scope.statusPending = true;
 
         vm.getUserInfo = function(){
             $http.get(environmentConfig.API + '/user/', {
@@ -41,7 +42,14 @@
             }).then(function (res) {
                 if (res.status === 200) {
                     if(res.data.data.length > 0){
-                        $location.path('/home')
+                        $scope.address = res.data.data[0];
+                        
+                        if($scope.address.status == 'pending'){
+                            $scope.statusPending = false;
+                        }
+                        else{
+                            $location.path('/home')
+                        }
                     }
                     $scope.loadingEtheriumView = false;
                 }
