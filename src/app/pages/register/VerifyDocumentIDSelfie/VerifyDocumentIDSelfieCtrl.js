@@ -2,10 +2,10 @@
     'use strict';
 
     angular.module('BlurAdmin.pages.verifyDocumentID')
-        .controller('VerifyDocumentIDCtrl', VerifyDocumentIDCtrl);
+        .controller('VerifyDocumentIDSelfieCtrl', VerifyDocumentIDSelfieCtrl);
 
     /** @ngInject */
-    function VerifyDocumentIDCtrl($rootScope,$scope,$http,cookieManagement,toastr,$uibModal,Upload,environmentConfig,$location,errorToasts) {
+    function VerifyDocumentIDSelfieCtrl($rootScope,$scope,$http,cookieManagement,toastr,$uibModal,Upload,environmentConfig,$location,errorToasts) {
 
         var vm = this;
         vm.token = cookieManagement.getCookie('TOKEN');
@@ -42,7 +42,7 @@
             }).then(function (res) {
                 if (res.status === 200) {
                     $scope.documents = res.data.data.results.filter(function (element) {
-                        return (element.document_category == 'Proof Of Identity');
+                        return (element.document_category == 'Advanced Proof Of Identity');
                     });
 
                     $scope.pendingDocuments = $scope.documents.filter(function (element) {
@@ -102,7 +102,7 @@
                 animation: true,
                 templateUrl: page,
                 size: size,
-                controller: 'AddDocumentIDModalCtrl',
+                controller: 'AddDocumentIDSelfieModalCtrl',
                 scope: $scope
             });
 
@@ -117,7 +117,7 @@
                 animation: true,
                 templateUrl: page,
                 size: size,
-                controller: 'ShowDocumentIDModalCtrl',
+                controller: 'ShowDocumentIDSelfieModalCtrl',
                 resolve: {
                     document: function () {
                         return document;
@@ -133,7 +133,7 @@
         };
 
         $scope.goToNextView = function(){
-            $location.path('/document/verify/IDSelfie');
+            $location.path('/document/verify/residence');
         };
 
     }

@@ -70,8 +70,8 @@ angular.module('BlurAdmin', [
                 $location.path('/login');
             } else{
                 if(newUrlLastElement == 'register' || newUrlLastElement == 'reset'
-                    || newUrl.indexOf('reset/confirm') > 0 || newUrl.indexOf('mobile/verify') > 0
-                    || newUrl.indexOf('mobile/confirm') > 0 || newUrl.indexOf('email/verify') > 0
+                    || newUrl.indexOf('reset/confirm') > 0 || newUrl.indexOf('email/verify') > 0
+                    || newUrl.indexOf('mobile/confirm') > 0 || newUrl.indexOf('mobile/verify') > 0
                     || newUrl.indexOf('email-verify/') > 0 || newUrl.indexOf('password-reset-confirm/') > 0
                     || newUrl.indexOf('document/verify/ID') > 0 || newUrl.indexOf('/document/verify/residence') > 0
                     || newUrl.indexOf('ethereum/address') > 0 || newUrl.indexOf('identity/verification') > 0

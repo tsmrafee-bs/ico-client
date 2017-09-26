@@ -14,6 +14,7 @@
     'BlurAdmin.pages.register',
     'BlurAdmin.pages.verifyMobile',
     'BlurAdmin.pages.verifyDocumentID',
+    'BlurAdmin.pages.verifyDocumentIDSelfie',
     'BlurAdmin.pages.verifyDocumentResidence',
     'BlurAdmin.pages.confirmMobile',
     'BlurAdmin.pages.emailVerify',

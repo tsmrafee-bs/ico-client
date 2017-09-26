@@ -1,10 +1,10 @@
 (function () {
     'use strict';
 
-    angular.module('BlurAdmin.pages.verifyDocumentID')
-        .controller('AddDocumentIDModalCtrl', AddDocumentIDModalCtrl);
+    angular.module('BlurAdmin.pages.verifyDocumentIDSelfie')
+        .controller('AddDocumentIDSelfieModalCtrl', AddDocumentIDSelfieModalCtrl);
 
-    function AddDocumentIDModalCtrl($scope,$uibModalInstance,toastr,Upload,environmentConfig,cookieManagement,errorToasts,errorHandler) {
+    function AddDocumentIDSelfieModalCtrl($scope,$uibModalInstance,toastr,Upload,environmentConfig,cookieManagement,errorToasts,errorHandler) {
 
         var vm = this;
 
@@ -13,7 +13,7 @@
         vm.token = cookieManagement.getCookie('TOKEN');
         $scope.userDocumentParams = {
             file: null,
-            document_type: 'Government Issued ID'
+            document_type: 'ID Confirmation Photo'
         };
         $scope.documentSelected = false;
         $scope.months = [
@@ -70,7 +70,7 @@
         //    'Municipal Rate and Taxes Invoice','Mortgage Statement','Telephone or Cellular Account','Insurance Policy Document',
         //    'Statement of Account Issued by a Retail Store','Government Issued ID','Passport','Drivers License',
         //    'ID Confirmation Photo','Other'];
-        $scope.documentTypeOptions = ['Government Issued ID','Passport','Drivers License'];
+        $scope.documentTypeOptions = ['ID Confirmation Photo'];
         vm.documentTypeOptionsObj = {
             'Utility Bill': 'utility_bill',
             'Bank Statement': 'bank_statement',

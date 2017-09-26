@@ -22,7 +22,7 @@
                         </Select>
                     </div>
                     <div class="col-sm-4">
-                        <Select class="form-control" ng-model="birth.month" ng-options="n for n in [] | range:1:13">
+                        <Select class="form-control" ng-model="birth.month" ng-options="m.value as m.name for m in months">
                         </Select>
                     </div>
                     <div class="col-sm-4">
