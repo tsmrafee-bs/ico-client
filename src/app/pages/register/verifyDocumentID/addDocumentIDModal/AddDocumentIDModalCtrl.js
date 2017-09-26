@@ -9,9 +9,10 @@
         var vm = this;
 
         $scope.addingDocument = false;
+        $scope.formSubmitted = false;
         vm.token = cookieManagement.getCookie('TOKEN');
         $scope.userDocumentParams = {
-            file: {},
+            file: null,
             document_type: 'Government Issued ID'
         };
         $scope.documentSelected = false;
@@ -68,10 +69,6 @@
                 }
                 errorToasts.evaluateErrors(error.data);
             });
-        };
-
-        $scope.documentChanged = function () {
-            $scope.documentSelected = true;
         };
 
 
