@@ -16,6 +16,8 @@
         $scope.addressVerified = "n";
         $scope.idDocumentsVerified = 'n';
         $scope.residenceDocumentsVerified = 'n';
+        
+        $scope.selfieDocumentsVerified = 'n';
         $scope.ethereumAddressVerified = true;
 
         $scope.goToGetVerified = function (path) {
@@ -113,13 +115,17 @@
             }).then(function (res) {
                 if (res.status === 200) {
                     $scope.idDocuments = res.data.data.results.filter(function (element) {
-                        return (element.document_category == 'Proof Of Identity' || element.document_category == 'Advanced Proof Of Identity');
+                        return element.document_category == 'Proof Of Identity';
                     });
                     $scope.idDocumentsVerified = vm.checkDocumentsArrayVerification($scope.idDocuments);
                     $scope.residenceDocuments = res.data.data.results.filter(function (element) {
                         return element.document_category == 'Proof Of Address';
                     });
                     $scope.residenceDocumentsVerified = vm.checkDocumentsArrayVerification($scope.residenceDocuments);
+                    $scope.selfieDocuments = res.data.data.results.filter(function (element) {
+                        return element.document_category == 'Advanced Proof Of Identity';
+                    });
+                    $scope.selfieDocumentsVerified = vm.checkDocumentsArrayVerification($scope.selfieDocuments);
                 }
             }).catch(function (error) {
                 $scope.loadingRegisterProgressView = false;
