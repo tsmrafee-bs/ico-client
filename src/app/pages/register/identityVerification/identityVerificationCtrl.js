@@ -15,6 +15,7 @@
         $scope.user = {};
         $scope.birth = {};
         vm.user = {};
+        $scope.formSubmitted = false;
 
         vm.getUserInfo = function () {
             $http.get(environmentConfig.API + '/user/', {

@@ -58,7 +58,6 @@
                     var rate = data.rate;
                     $scope.divisibilityEur = data.currency.divisibility;
                     $scope.eurRate = rate / Math.pow(10,$scope.divisibilityEur);
-                    console.log(data);
                 }
             }).catch(function (error) {
                 $scope.loadingEtheriumView = false;

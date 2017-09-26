@@ -11,10 +11,12 @@
         $scope.addingDocument = false;
         vm.token = cookieManagement.getCookie('TOKEN');
         $scope.userDocumentParams = {
-            file: {},
+            file: null,
             document_type: 'Utility Bill'
         };
         $scope.documentSelected = false;
+        
+        $scope.formSubmitted = false;
         $scope.documentTypeOptions = ['Utility Bill','Bank Statement','Lease Or Rental Agreement',
                 'Municipal Rate and Taxes Invoice','Mortgage Statement','Telephone or Cellular Account','Insurance Policy Document',
                 'Statement of Account Issued by a Retail Store'];
