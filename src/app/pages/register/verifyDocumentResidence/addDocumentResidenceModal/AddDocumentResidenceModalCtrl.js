@@ -15,7 +15,56 @@
             document_type: 'Utility Bill'
         };
         $scope.documentSelected = false;
-        
+        $scope.months = [
+            {
+                value: 1,
+                name: "January"
+            },
+            {
+                value: 2,
+                name: "February"
+            },
+            {
+                value: 3,
+                name: "March"
+            },
+            {
+                value: 4,
+                name: "April"
+            },
+            {
+                value: 5,
+                name: "May"
+            },
+            {
+                value: 6,
+                name: "June"
+            },
+            {
+                value: 7,
+                name: "July"
+            },
+            {
+                value: 8,
+                name: "August"
+            },
+            {
+                value: 9,
+                name: "September"
+            },
+            {
+                value: 10,
+                name: "October"
+            },
+            {
+                value: 11,
+                name: "November"
+            },
+            {
+                value: 12,
+                name: "December"
+            }
+        ];
         $scope.formSubmitted = false;
         $scope.documentTypeOptions = ['Utility Bill','Bank Statement','Lease Or Rental Agreement',
                 'Municipal Rate and Taxes Invoice','Mortgage Statement','Telephone or Cellular Account','Insurance Policy Document',

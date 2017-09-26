@@ -4,7 +4,7 @@
 <div ng-hide="loadingEtheriumView" class="auth-main">
     <div class="auth-block verification-text">
         <div class="pull-right step-number">
-            Step 6 of 6
+            Step 7 of 7
         </div>
         <h1>Add ethereum address</h1>
 
@@ -23,7 +23,10 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
-                        <button ng-disabled="!ethereum.address" ng-click="addEthereumAddress(ethereum.address)"
+                        <button ng-show="statusPending" ng-disabled="!ethereum.address" ng-click="addEthereumAddress(ethereum.address)"
+                                class="btn btn-primary btn-verify-mobile pull-right">Done
+                        </button>
+                        <button ng-hide="statusPending" ng-click="goToNextView()"
                                 class="btn btn-primary btn-verify-mobile pull-right">Done
                         </button>
                         <button ng-click="goToNextView()" class="btn btn-danger btn-verify-mobile pull-left">Skip
