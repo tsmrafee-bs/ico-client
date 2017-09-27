@@ -30,6 +30,10 @@
                     }
                 }).catch(function (error) {
                     $scope.loadingSmsAuth = false;
+                    if(error.status == 403 || error.status == 401){
+                        errorHandler.handle403();
+                        return
+                    }
                     //errorToasts.evaluateErrors(error.data);
                 });
             }
@@ -53,6 +57,10 @@
                     }
                 }).catch(function (error) {
                     $scope.loadingSmsAuth = false;
+                    if(error.status == 403 || error.status == 401){
+                        errorHandler.handle403();
+                        return
+                    }
                     errorToasts.evaluateErrors(error.data);
                 });
             }
@@ -75,6 +83,10 @@
                 }).catch(function (error) {
                     console.log(error)
                     $scope.loadingSmsAuth = false;
+                    if(error.status == 403 || error.status == 401){
+                        errorHandler.handle403();
+                        return
+                    }
                     errorToasts.evaluateErrors(error.data);
                 });
             }

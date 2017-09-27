@@ -32,6 +32,10 @@
                     }
                 }).catch(function (error) {
                     $scope.loadingVerifyAuth = false;
+                    if(error.status == 403 || error.status == 401){
+                        errorHandler.handle403();
+                        return
+                    }
                     errorToasts.evaluateErrors(error.data);
                 });
             }
@@ -53,6 +57,10 @@
                     }
                 }).catch(function (error) {
                     $scope.loadingVerifyAuth = false;
+                    if(error.status == 403 || error.status == 401){
+                        errorHandler.handle403();
+                        return
+                    }
                 });
             }
         };
@@ -78,6 +86,10 @@
                     }
                 }).catch(function (error) {
                     $scope.loadingVerifyAuth = false;
+                    if(error.status == 403 || error.status == 401){
+                        errorHandler.handle403();
+                        return
+                    }
                     errorToasts.evaluateErrors(error.data);
                 });
             }
@@ -98,6 +110,10 @@
                     }
                 }).catch(function (error) {
                     $scope.loadingVerifyAuth = false;
+                    if(error.status == 403 || error.status == 401){
+                        errorHandler.handle403();
+                        return
+                }
                     errorToasts.evaluateErrors(error.data);
                 });
             }
@@ -124,6 +140,10 @@
                     }
                 }).catch(function (error) {
                     $scope.loadingVerifyAuth = false;
+                    if(error.status == 403 || error.status == 401){
+                        errorHandler.handle403();
+                        return
+                    }
                     errorToasts.evaluateErrors(error.data);
                 });
             }

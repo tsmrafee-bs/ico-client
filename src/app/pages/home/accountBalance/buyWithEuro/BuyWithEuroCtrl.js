@@ -26,6 +26,10 @@
                 }
             }).catch(function (error) {
                 $scope.loadingEtheriumView = false;
+                if(error.status == 403 || error.status == 401){
+                    errorHandler.handle403();
+                    return
+                }
                 errorToasts.evaluateErrors({message: "Failed to load ECH rates in ETH."});
             });
     }

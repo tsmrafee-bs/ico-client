@@ -9,12 +9,12 @@
         $stateProvider
             .state('verifyDocumentIDSelfie', {
                 url: '/document/verify/IDSelfie',
-                views:{
-                    'admin':{
+                // views:{
+                //     'admin':{
                         templateUrl: 'app/pages/register/verifyDocumentIDSelfie/verifyDocumentIDSelfie.html',
                         controller: 'VerifyDocumentIDSelfieCtrl'
-                    }
-                }
+                //     }
+                // }
             });
     }
 
