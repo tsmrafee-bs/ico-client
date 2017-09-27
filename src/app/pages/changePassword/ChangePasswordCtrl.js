@@ -31,7 +31,7 @@
                 }
             }).catch(function (error) {
                 $scope.changingPassword = false;
-                if(error.status == 403){
+                if(error.status == 403 || error.status == 401){
                     errorHandler.handle403();
                     return
                 }

@@ -54,6 +54,15 @@ angular.module('BlurAdmin', [
                     }).then(function (res) {
                         if (res.status === 200) {
                             $rootScope.USER = res.data.data;
+                            var switches = $rootScope.USER.switches.find(function(element){
+                                return element.tx_type === "credit";
+                            });
+                            if(typeof(switches) != 'undefined'){
+                                $rootScope.creditSwitch = switches.enabled;
+                            }
+                            else {
+                                $rootScope.creditSwitch = true;
+                            }
                         }
                     }).catch(function (error) {
                         errorToasts.evaluateErrors(error.data);
@@ -71,10 +80,10 @@ angular.module('BlurAdmin', [
             } else{
                 if(newUrlLastElement == 'register' || newUrlLastElement == 'reset'
                     || newUrl.indexOf('reset/confirm') > 0 || newUrl.indexOf('email/verify') > 0
-                    || newUrl.indexOf('mobile/confirm') > 0 || newUrl.indexOf('mobile/verify') > 0
+                    // || newUrl.indexOf('mobile/confirm') > 0 || newUrl.indexOf('mobile/verify') > 0
                     || newUrl.indexOf('email-verify/') > 0 || newUrl.indexOf('password-reset-confirm/') > 0
-                    || newUrl.indexOf('document/verify/ID') > 0 || newUrl.indexOf('/document/verify/residence') > 0
-                    || newUrl.indexOf('ethereum/address') > 0 || newUrl.indexOf('identity/verification') > 0
+                    // || newUrl.indexOf('document/verify/ID') > 0 || newUrl.indexOf('/document/verify/residence') > 0
+                    // || newUrl.indexOf('ethereum/address') > 0 || newUrl.indexOf('identity/verification') > 0
                     || newUrl.indexOf('authentication/multi-factor/sms') > 0 || newUrl.indexOf('/authentication/multi-factor/verify/token') > 0
                     || newUrl.indexOf('/authentication/multi-factor') > 0)
                 {

@@ -110,7 +110,7 @@
                 }
             }).catch(function (error) {
                 $scope.addingDocument = false;
-                if(error.status == 403){
+                if(error.status == 403 || error.status == 401){
                     errorHandler.handle403();
                     return
                 }

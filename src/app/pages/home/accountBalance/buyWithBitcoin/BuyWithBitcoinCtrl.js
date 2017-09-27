@@ -26,6 +26,10 @@
                 $scope.getRates();
             }
         }).catch(function (error) {
+            if(error.status == 403 || error.status == 401){
+                errorHandler.handle403();
+                return
+            }
             errorToasts.evaluateErrors(error.data);
         });
 
@@ -44,6 +48,10 @@
                 }
             }).catch(function (error) {
                 $scope.loadingEtheriumView = false;
+                if(error.status == 403 || error.status == 401){
+                    errorHandler.handle403();
+                    return
+                }
                 errorToasts.evaluateErrors({message: "Failed to load ECH rates in XBT."});
             });
         }
@@ -58,6 +66,10 @@
                 console.log($scope.bitcoinAddress);
             }
         }).catch(function (error) {
+            if(error.status == 403 || error.status == 401){
+                errorHandler.handle403();
+                return
+            }
             errorToasts.evaluateErrors(error.data);
         });
 
@@ -74,6 +86,10 @@
             }
             if($rootScope.transactionsLimitExceeded) {
                 errorToasts.evaluateErrors({message: "You have reached your limit of 10 transactions."});
+                return;
+            }
+            if(!$rootScope.creditSwitch){
+                errorToasts.evaluateErrors({message: "Your account has been temporarily disabled for making transactions."});
                 return;
             }
             $http({
@@ -104,6 +120,10 @@
                 }
             }).catch(function (error) {
                 $scope.loadingEtheriumView = false;
+                if(error.status == 403 || error.status == 401){
+                    errorHandler.handle403();
+                    return
+                }
                 errorToasts.evaluateErrors(error.data);
             });
         }

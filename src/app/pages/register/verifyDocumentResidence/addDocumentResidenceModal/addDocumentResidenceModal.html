@@ -1,11 +1,11 @@
 <div class="modal-content">
-    <div class="modal-header">
+    <div class="modal-header col-md-12">
         <button type="button" class="close" ng-click="$dismiss()" aria-label="Close">
             <em class="ion-ios-close-empty sn-link-close"></em>
         </button>
         <h4 class="modal-title" id="myModalLabel">Add document</h4>
     </div>
-    <div class="modal-body">
+    <div class="modal-body col-md-12" >
         <div class="col-md-6 col-lg-6">
             <img ng-show="!addingDocument && userDocumentParams.file" ngf-thumbnail="userDocumentParams.file" height="312px" width="100%">
             <div ng-show="addingDocument" style="text-align:center">
@@ -75,11 +75,15 @@
                         This field is required!
                     </span>
                 </div>
+                <div class="row modal-body-buttons">
+                    <button type="button" class="btn btn-danger pull-left" ng-click="$dismiss()">Close</button>
+                    <button ng-click="addDocumentForm.$valid ? addDocument() : formSubmitted = true" ng-disabled="addingDocument" type="button" class="btn btn-primary pull-right">Add</button>
+                </div>
             </div>
         </form>
     </div>
-    <div class="modal-footer">
+    <!-- <div class="modal-footer col-md-12">
         <button type="button" class="btn btn-danger pull-left" ng-click="$dismiss()">Close</button>
         <button ng-click="addDocumentForm.$valid ? addDocument() : formSubmitted = true" ng-disabled="addingDocument" type="button" class="btn btn-primary pull-right">Add</button>
-    </div>
+    </div> -->
 </div>
