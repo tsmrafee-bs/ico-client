@@ -21,7 +21,7 @@
             userVerification.verifyMobile(function(err,verified){
                 if(verified){
                     $scope.loadingMobileVerifyView = false;
-                    toastr.success('Mobile Number verified','Message');
+                    $rootScope.mobileVerified = true;
                     $location.path('/identity/verification');
                 } else {
                     $scope.loadingMobileVerifyView = false;

@@ -4,7 +4,7 @@
     angular.module('BlurAdmin.pages.verifyDocumentResidence')
         .controller('AddDocumentResidenceModalCtrl', AddDocumentResidenceModalCtrl);
 
-    function AddDocumentResidenceModalCtrl($scope,$uibModalInstance,toastr,Upload,environmentConfig,cookieManagement,errorToasts,errorHandler) {
+    function AddDocumentResidenceModalCtrl($scope,$rootScope,$uibModalInstance,toastr,Upload,environmentConfig,cookieManagement,errorToasts,errorHandler) {
 
         var vm = this;
 
@@ -92,7 +92,6 @@
             var metadata = {
                 "issued_by" : $scope.issued_by,
                 "issued_date" : $scope.issue.year+"-"+$scope.issue.month+"-"+$scope.issue.day,
-                "id_number" : $scope.id_number
             };
             $scope.userDocumentParams['metadata'] = JSON.stringify(metadata);
             Upload.upload({

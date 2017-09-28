@@ -66,6 +66,7 @@
                 }
             }).then(function (res) {
                 if (res.status === 200) {
+                    $rootScope.mobileVerified = true;
                     $location.path('/identity/verification');
                 }
             }).catch(function (error) {

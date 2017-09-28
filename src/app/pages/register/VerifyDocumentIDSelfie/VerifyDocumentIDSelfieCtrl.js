@@ -56,16 +56,19 @@
                     var statusCheck = vm.checkDocumentsArrayVerification($scope.documents, "verified");
                     if(statusCheck === true) {
                         $scope.status = 'verified';
+                        $rootScope.selfieDocumentsVerified = 'v';
                     }
                     else {
                         statusCheck = vm.checkDocumentsArrayVerification($scope.documents, "pending");
                         if(statusCheck === true) {
                             $scope.status = 'pending';
+                            $rootScope.selfieDocumentsVerified = 'p';
                         }
                         else {
                             statusCheck = vm.checkDocumentsArrayVerification($scope.documents, "declined");
                             if(statusCheck === true) {
                                 $scope.status = 'declined';
+                                $rootScope.selfieDocumentsVerified = 'd';
                             }
                         }
                     }

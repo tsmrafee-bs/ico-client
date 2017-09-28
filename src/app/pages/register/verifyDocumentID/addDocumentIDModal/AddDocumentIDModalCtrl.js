@@ -4,7 +4,7 @@
     angular.module('BlurAdmin.pages.verifyDocumentID')
         .controller('AddDocumentIDModalCtrl', AddDocumentIDModalCtrl);
 
-    function AddDocumentIDModalCtrl($scope,$uibModalInstance,toastr,Upload,environmentConfig,cookieManagement,errorToasts,errorHandler) {
+    function AddDocumentIDModalCtrl($scope,$rootScope,$uibModalInstance,toastr,Upload,environmentConfig,cookieManagement,errorToasts,errorHandler) {
 
         var vm = this;
 
