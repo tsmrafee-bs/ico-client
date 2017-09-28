@@ -4,7 +4,7 @@
     angular.module('BlurAdmin.pages.verifyDocumentIDSelfie')
         .controller('AddDocumentIDSelfieModalCtrl', AddDocumentIDSelfieModalCtrl);
 
-    function AddDocumentIDSelfieModalCtrl($scope,$uibModalInstance,toastr,Upload,environmentConfig,cookieManagement,errorToasts,errorHandler) {
+    function AddDocumentIDSelfieModalCtrl($scope,$rootScope,$uibModalInstance,toastr,Upload,environmentConfig,cookieManagement,errorToasts,errorHandler) {
 
         var vm = this;
 

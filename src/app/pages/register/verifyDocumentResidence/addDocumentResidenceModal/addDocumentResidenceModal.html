@@ -7,7 +7,7 @@
     </div>
     <div class="modal-body col-md-12" >
         <div class="col-md-6 col-lg-6">
-            <img ng-show="!addingDocument && userDocumentParams.file" ngf-thumbnail="userDocumentParams.file" height="312px" width="100%">
+            <img ng-show="!addingDocument && userDocumentParams.file" ngf-thumbnail="userDocumentParams.file" style="max-height:320px;width:100%">
             <div ng-show="addingDocument" style="text-align:center">
                 <loading-image></loading-image>
             </div>
@@ -32,16 +32,6 @@
                 <br>
                 <select class="form-control pointer" name="type" ng-model="userDocumentParams.document_type" ng-options="type for type in documentTypeOptions" required>
                 </select>
-            </div>
-            <div class="form-group">
-                <label><strong>ID/Passport number for this document</strong> <span class="required-icon">*</span></label>
-                <br>
-                <input class="form-control" placeholder="ID or passport number" name="id_number" type="text" ng-model="id_number" required>
-                <div style="padding-top:5px;" ng-show="formSubmitted && addDocumentForm.id_number.$invalid">
-                    <span style="color:red;" >
-                        This field is required!
-                    </span>
-                </div>
             </div>
             <div class="form-group">
                 <label><strong>Issued by</strong> <span class="required-icon">*</span></label>

@@ -76,11 +76,11 @@ angular.module('BlurAdmin', [
                 $rootScope.USER = {};
                 $rootScope.gotToken = false;
                 $rootScope.notRegistering = true;
+                $rootScope.registerProgress = false;
                 $location.path('/login');
             } else{
                 if(newUrlLastElement == 'register' || newUrlLastElement == 'reset'
                     || newUrl.indexOf('reset/confirm') > 0 || newUrl.indexOf('email/verify') > 0
-                    // || newUrl.indexOf('mobile/confirm') > 0 || newUrl.indexOf('mobile/verify') > 0
                     || newUrl.indexOf('email-verify/') > 0 || newUrl.indexOf('password-reset-confirm/') > 0
                     // || newUrl.indexOf('document/verify/ID') > 0 || newUrl.indexOf('/document/verify/residence') > 0
                     // || newUrl.indexOf('ethereum/address') > 0 || newUrl.indexOf('identity/verification') > 0
@@ -88,12 +88,21 @@ angular.module('BlurAdmin', [
                     || newUrl.indexOf('/authentication/multi-factor') > 0)
                 {
                     $rootScope.notRegistering = false;
+                    $rootScope.registerProgress = false;
                 } else if (token) {
                     $rootScope.notRegistering = true;
                     $rootScope.gotToken = true;
+                    $rootScope.registerProgress = false;
+                    if(newUrl.indexOf('mobile/confirm') > 0 || newUrl.indexOf('mobile/verify') > 0
+                        || newUrl.indexOf('document/verify/ID') > 0 || newUrl.indexOf('/document/verify/residence') > 0
+                        || newUrl.indexOf('ethereum/address') > 0 || newUrl.indexOf('identity/verification') > 0)
+                    {
+                        $rootScope.registerProgress = true;
+                    }
                     getUserInfo();
                 } else {
                     $rootScope.gotToken = false;
+                    $rootScope.registerProgress = false;
                     $location.path('/login');
                 }
 
