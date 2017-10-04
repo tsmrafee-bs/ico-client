@@ -27,7 +27,6 @@ angular.module('BlurAdmin', [
             $rootScope.$pageFinishedLoading = true;
         };
 
-
         //using to check if user is registering or not
         $rootScope.notRegistering = true;
 
@@ -36,7 +35,6 @@ angular.module('BlurAdmin', [
 
             routeManagement(event,newUrl);
         });
-
 
 
         function routeManagement(event,newUrl){

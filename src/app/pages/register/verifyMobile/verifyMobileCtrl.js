@@ -11,13 +11,13 @@
         $scope.path = $location.path();
         $scope.showAuthNav = false;
         vm.token = cookieManagement.getCookie('TOKEN');
-        $scope.loadingMobileVerifyView = true;
+        $scope.loadingMobileVerifyView = false;
         $scope.userTel = {
             number: ''
         };
 
         vm.checkIfMobileVerified = function(number){
-            $scope.loadingMobileVerifyView = true;
+            $scope.loadingMobileVerifyView = false;
             userVerification.verifyMobile(function(err,verified){
                 if(verified){
                     $scope.loadingMobileVerifyView = false;
@@ -30,7 +30,7 @@
         };
 
         vm.getUserInfo = function(){
-            $scope.loadingMobileVerifyView = true;
+            $scope.loadingMobileVerifyView = false;
             $http.get(environmentConfig.API + '/user/', {
                 headers: {
                     'Content-Type': 'application/json',

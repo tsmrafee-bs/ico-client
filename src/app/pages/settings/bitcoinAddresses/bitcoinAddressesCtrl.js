@@ -10,7 +10,7 @@
         var vm = this;
         vm.token = cookieManagement.getCookie('TOKEN');
         $scope.editingBankAccounts = false;
-        $scope.loadingBankAccounts = true;
+        $scope.loadingBankAccounts = false;
         $scope.newBitcoinAddress = {};
         vm.updatedBankAccount = {};
 

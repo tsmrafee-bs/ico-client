@@ -10,7 +10,7 @@
         var vm = this;
         vm.token = cookieManagement.getCookie('TOKEN');
         $scope.showAuthNav = false;
-        $scope.loadingDocumentsIDView = true;
+        $scope.loadingDocumentsIDView = false;
         $scope.documents = [];
         $scope.status = 'noUpload';
 

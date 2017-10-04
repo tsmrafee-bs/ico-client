@@ -27,35 +27,28 @@
                             This fields are required!</span>
                         </div>
                     </div>
-                    <!-- <div class="row form-group">
-                        <div class="col-sm-3 identity-label">
-                            <p>ID number</p>
-                        </div>
-                        <div class="col-sm-9">
-                            <div class="col-sm-12">
-                                <input class="form-control" ng-change="userChanged('id_number')" placeholder="ID or passport number" name="ID_number" type="text" ng-model="user.id_number">
-                            </div>
-                        </div>
-                    </div> -->
                     <div class="row form-group">
                         <div class="col-sm-3 identity-label">
                             <p>Date of birth</p>
                         </div>
                         <div class="col-sm-9">
                             <div class="col-sm-4">
-                                <Select class="form-control" ng-model="birth.day" ng-options="n for n in [] | range:1:32" name="bday" required>
-                                </Select>
+                                <select class="form-control" ng-model="birth.day" ng-options="n for n in [] | range:1:32" name="bday" required>
+                                    <option value="" disabled selected>Day</option>
+                                </select>
                             </div>
                             <div class="col-sm-4">
-                                <Select class="form-control" ng-model="birth.month" ng-options="m.value as m.name for m in months" name="bmonth" required>
-                                </Select>
+                                <select class="form-control" ng-model="birth.month" ng-options="m.value as m.name for m in months" name="bmonth" required>
+                                    <option value="" disabled selected>Month</option>
+                                </select>
                             </div>
                             <div class="col-sm-4">
-                                <Select class="form-control" ng-model="birth.year" ng-options="n for n in [] | range:1950:2001" name="byear" required>
-                                </Select>
+                                <select class="form-control" ng-model="birth.year" ng-options="n for n in [] | range:1950:2001" name="byear" required>
+                                    <option value="" disabled selected>Year</option>
+                                </select>
                             </div>
                         </div>
-                        <span style="color:red;float: left;padding-left: 16px;padding-top: 5px;" ng-show="formSubmitted && (infoForm.bday.$invalid || infoForm.bmonth.$invalid || infoForm.byear.$invalid)">
+                        <span style="color:red;float: left;padding-left: 30px;padding-top: 6px;" ng-show="formSubmitted && (infoForm.bday.$invalid || infoForm.bmonth.$invalid || infoForm.byear.$invalid)">
                             This field is required!</span>
                     </div>
                     <div class="row form-group">

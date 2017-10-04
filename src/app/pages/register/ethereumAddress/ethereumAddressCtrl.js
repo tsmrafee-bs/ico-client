@@ -11,7 +11,7 @@
         vm.token = cookieManagement.getCookie('TOKEN');
         $scope.ethereum = {address: ''};
         $scope.showAuthNav = false;
-        $scope.loadingEtheriumView = true;
+        $scope.loadingEtheriumView = false;
         $scope.statusPending = true;
 
         vm.getUserInfo = function(){
@@ -38,7 +38,7 @@
         vm.getUserInfo();
 
         vm.getEthereumAddresses = function(){
-            $http.get(environmentConfig.API + '/user/bitcoin-accounts/', {
+            $http.get(environmentConfig.API + '/user/crypto-accounts/', {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': vm.token

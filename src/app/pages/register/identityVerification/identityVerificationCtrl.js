@@ -9,7 +9,7 @@
 
         var vm = this;
         vm.token = cookieManagement.getCookie('TOKEN');
-        $scope.loadingBasicInfoView = true;
+        $scope.loadingBasicInfoView = false;
         $scope.showAuthNav = false;
         $scope.address = {};
         $scope.user = {};

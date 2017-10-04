@@ -39,14 +39,17 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <Select class="form-control" ng-model="expire.day" name="expire_day" ng-options="n for n in [] | range:1:32" required>
+                        <option value="" disabled selected>Day</option>
                         </Select>
                     </div>
                     <div class="col-sm-4">
                         <Select class="form-control" ng-model="expire.month" name="expire_month" ng-options="m.value as m.name for m in months" reqiured>
+                        <option value="" disabled selected>Month</option>
                         </Select>
                     </div>
                     <div class="col-sm-4">
                         <Select class="form-control" ng-model="expire.year" name="expire_year" ng-options="n for n in [] | range:1950:2021" required>
+                        <option value="" disabled selected>Year</option>
                         </Select>
                     </div>
                 </div>
@@ -59,7 +62,7 @@
             <div class="form-group">
                 <label><strong>ID/Passport number for this document</strong> <span class="required-icon">*</span></label>
                 <br>
-                <input class="form-control" placeholder="ID or passport number" name="id_number" type="text" ng-model="id_number" required>
+                <input class="form-control" placeholder="e.g. I123r4t5" name="id_number" type="text" ng-model="id_number" required>
                 <div style="padding-top:5px;" ng-show="formSubmitted && addDocumentForm.id_number.$invalid">
                     <span style="color:red;">
                         This field is required!
@@ -69,7 +72,7 @@
             <div class="form-group">
                 <label><strong>Issued by</strong> <span class="required-icon">*</span></label>
                 <br>
-                <input type="text" class="form-control" name="issued_by" placeholder="Issued by" ng-model="issued_by" required>
+                <input type="text" class="form-control" name="issued_by" placeholder="e.g. Government" ng-model="issued_by" required>
                 <div style="padding-top:5px;" ng-show="formSubmitted && addDocumentForm.issued_by.$invalid">
                     <span style="color:red;">
                         This field is required!
@@ -82,14 +85,17 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <Select class="form-control" ng-model="issue.day" name="issue_day" ng-options="n for n in [] | range:1:32" required>
+                        <option value="" disabled selected>Day</option>
                         </Select>
                     </div>
                     <div class="col-sm-4">
                         <Select class="form-control" ng-model="issue.month" name="issue_month" ng-options="m.value as m.name for m in months" required>
+                        <option value="" disabled selected>Month</option>
                         </Select>
                     </div>
                     <div class="col-sm-4">
                         <Select class="form-control" ng-model="issue.year" name="issue_year" ng-options="n for n in [] | range:1950:2021" required>
+                        <option value="" disabled selected>Year</option>
                         </Select>
                     </div>
                 </div>

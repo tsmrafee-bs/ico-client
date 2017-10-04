@@ -10,7 +10,7 @@
         var vm = this;
         vm.token = cookieManagement.getCookie('TOKEN');
         $scope.showAuthNav = false;
-        $scope.loadingEmailVerifyView = true;
+        $scope.loadingEmailVerifyView = false;
 
         vm.checkIfEmailVerified = function(email){
             $scope.loadingEmailVerifyView = true;

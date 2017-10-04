@@ -9,7 +9,7 @@
 
         var vm = this;
         vm.token = cookieManagement.getCookie('TOKEN');
-        $scope.loadingMobileConfirmView = true;
+        $scope.loadingMobileConfirmView = false;
         $scope.showAuthNav = false;
         $scope.mobile = {
             otp: ''
@@ -20,7 +20,7 @@
         };
 
         vm.checkIfMobileVerified = function(number){
-            $scope.loadingMobileConfirmView = true;
+            $scope.loadingMobileConfirmView = false;
             userVerification.verifyMobile(function(err,verified){
                 if(verified){
                     $scope.loadingMobileConfirmView = false;
