@@ -69,13 +69,13 @@
                         }
                     }).catch(function (error) {
                         $scope.loadingRegisterProgressView = false;
-                        errorToasts.evaluateErrors(error.data);
+                        //errorToasts.evaluateErrors(error.data);
                     });
                 }
                 
             }).catch(function (error) {
                 $scope.loadingRegisterProgressView = false;
-                errorToasts.evaluateErrors(error.data);
+                //errorToasts.evaluateErrors(error.data);
             });
         };
         vm.getUserInfo();
@@ -129,7 +129,7 @@
                 }
             }).catch(function (error) {
                 $scope.loadingRegisterProgressView = false;
-                errorToasts.evaluateErrors(error.data);
+                //errorToasts.evaluateErrors(error.data);
             });
         };
         vm.getUserDocuments();
@@ -176,7 +176,7 @@
                 }
             }).catch(function (error) {
                 $scope.loadingRegisterProgressView = false;
-                errorToasts.evaluateErrors(error.data);
+                //errorToasts.evaluateErrors(error.data);
             });
         };
         vm.getEthereumAddresses();

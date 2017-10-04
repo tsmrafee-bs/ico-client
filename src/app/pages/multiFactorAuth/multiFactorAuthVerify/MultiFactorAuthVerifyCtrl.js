@@ -130,6 +130,8 @@
                 }).then(function (res) {
                     if(res.status === 201) {
                         $location.search('prevUrl', null);
+                        
+                        cookieManagement.deleteCookie('MFA');
                         toastr.success('Token successfully verified');
                         if($scope.prevLocation == 'login'){
                             $location.path('/verification');

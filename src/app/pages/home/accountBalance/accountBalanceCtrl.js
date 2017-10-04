@@ -11,6 +11,10 @@
 
         $scope.showView = '';
         $scope.view = function(view){
+          if($rootScope.allVerified == false) {
+                errorToasts.evaluateErrors({message: "You're not allowed to purchase ECH until you are fully verified."});
+                return;
+            }
           if($rootScope.ico_status == 'open'){
             $scope.showView = view;
             $rootScope.buyPage = view;

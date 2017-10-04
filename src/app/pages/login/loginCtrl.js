@@ -9,6 +9,7 @@
 
         var vm = this;
         cookieManagement.deleteCookie('TOKEN');
+        cookieManagement.deleteCookie('MFA');
         $scope.showAuthNav = true;
         $scope.path = $location.path();
 
@@ -23,7 +24,6 @@
                 if (res.status === 200) {
                     cookieManagement.setCookie('TOKEN','Token ' + res.data.data.token);
                     vm.checkMultiFactorAuthEnabled(res.data.data.token);
-
                 }
             }).catch(function (error) {
                 $scope.gotCompanyName = false;
@@ -44,6 +44,7 @@
                         var enabledObj = vm.checkMultiFactorAuthEnabledFromData(res.data.data);
                         if(enabledObj.enabled){
                             $rootScope.$pageFinishedLoading = true;
+                            cookieManagement.setCookie('MFA', true);
                             $location.path('/authentication/multi-factor/verify/' + enabledObj.key).search({prevUrl: 'login'});
                         } else {
                             $location.path('/home');

@@ -39,6 +39,7 @@ angular.module('BlurAdmin', [
 
         function routeManagement(event,newUrl){
             var token = cookieManagement.getCookie('TOKEN'),
+                mfa = cookieManagement.getCookie('MFA'),
                 newUrlArray = newUrl.split('/'),
                 newUrlLastElement = _.last(newUrlArray);
 
@@ -87,7 +88,7 @@ angular.module('BlurAdmin', [
                 {
                     $rootScope.notRegistering = false;
                     $rootScope.registerProgress = false;
-                } else if (token) {
+                } else if (token && !mfa) {
                     $rootScope.notRegistering = true;
                     $rootScope.gotToken = true;
                     $rootScope.registerProgress = false;

@@ -25,7 +25,14 @@
                 $rootScope.ico_status = $scope.ico_status;
             }
         }).catch(function (error) {
-            errorToasts.evaluateErrors(error.data);
+            if(error.status == 500){
+                $scope.ico_status = "error";
+                $rootScope.ico_status = $scope.ico_status;
+            }
+            if(error.status == 403 || error.status == 401){
+                errorHandler.handle403();
+                return;
+            }
         });
 
         vm.getUserAccounts = function(){
@@ -46,7 +53,11 @@
                     }
                 }).catch(function (error) {
                     $scope.loadingCurrencies = false;
-                    if(error.status == 403){
+                    if(error.status == 500){
+                        $scope.ico_status = "error";
+                        $rootScope.ico_status = $scope.ico_status;
+                    }
+                    if(error.status == 403 || error.status == 401){
                         errorHandler.handle403();
                         return;
                     }
