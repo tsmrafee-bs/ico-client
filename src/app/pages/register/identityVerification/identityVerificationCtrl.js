@@ -85,7 +85,7 @@
                         }
                     }
 
-                    if($scope.user.status == true) {
+                    if($scope.user.status == "verified" && $scope.address.status == "verified") {
                         $scope.goToNextView();
                     }
                     $scope.showAuthNav = true;
@@ -112,6 +112,9 @@
                 if (res.status === 200) {
                     $scope.loadingBasicInfoView = false;
                     $scope.address = res.data.data;
+                    if($scope.user.status == "verified" && $scope.address.status == "verified") {
+                        $scope.goToNextView();
+                    }
                 }
             }).catch(function (error) {
                 $scope.loadingBasicInfoView = false;
